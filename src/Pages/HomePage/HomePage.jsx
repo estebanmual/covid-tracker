@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllTimeData } from '../Redux/dashboard/dashboardReducer';
-import { fetchContinents } from '../Redux/continents/continentsReducer';
-import AllTimeStats from '../components/AllTimeStats/AllTimeStats';
-import ContinentsDisplay from '../components/ContinentsDisplay/ContinentsDisplay';
+import { fetchAllTimeData } from '../../Redux/dashboard/dashboardReducer';
+import { fetchContinents } from '../../Redux/continents/continentsReducer';
+import AllTimeStats from '../../components/AllTimeStats/AllTimeStats';
+import ContinentsDisplay from '../../components/ContinentsDisplay/ContinentsDisplay';
 import style from './HomePage.module.css';
-import search from '../images/search.svg';
-import home from '../images/casa.svg';
+import Navbar from '../../components/Navbar/Navbar';
 
 function HomePage() {
   const dispatch = useDispatch();
@@ -19,19 +18,14 @@ function HomePage() {
 
   return (
     <>
-      <div className={style.navbar}>
-        <img className={style.navbar__img} src={home} alt="Home" />
-        <h1 className={style.navbar__title}>covid-19 stats</h1>
-        <img className={style.navbar__img} src={search} alt="search" />
-      </div>
+      <Navbar pageTo="Home" />
       <div className={style.mapDiv}>
         <iframe className={style.map} title="covid map" src="https://coronavirus.app/map?embed=true" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
       </div>
 
       <h2 className={style.title}>ALL TIME STATS</h2>
-      <div>
-        <AllTimeStats />
-      </div>
+
+      <AllTimeStats />
 
       <h2 className={style.title}>STATS BY CONTINENT</h2>
       <div className={style.continents}>
