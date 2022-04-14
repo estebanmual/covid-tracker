@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import style from './ContinentDisplay.module.css';
 import africaIMG from '../../images/africa.svg';
@@ -11,76 +12,40 @@ import arrow from '../../images/arrow-right.svg';
 
 export default function ContinentsDisplay({ continent }) {
   const { name, active } = continent;
-  switch (name) {
-    case 'Asia':
-      return (
-        <div className={style.Asia}>
-          <img className={style.MapImg} src={asiaIMG} alt="Asia" />
-          <span className={style.info}>
-            <p className={style.name}>{name}</p>
-            <p className={style.number}>{new Intl.NumberFormat('en').format(active)}</p>
-          </span>
-          <img className={style.arrow} src={arrow} alt="Arrow" />
-        </div>
-      );
-    case 'North America':
-      return (
-        <div className={style.NorthAmerica}>
-          <img className={style.MapImg} src={northAmericaIMG} alt="North America" />
-          <span className={style.info}>
-            <p className={style.name}>{name}</p>
-            <p className={style.number}>{new Intl.NumberFormat('en').format(active)}</p>
-          </span>
-          <img className={style.arrow} src={arrow} alt="Arrow" />
-        </div>
-      );
-    case 'South America':
-      return (
-        <div className={style.SouthAmerica}>
-          <img className={style.MapImg} src={southAmericaIMG} alt="South America" />
-          <span className={style.info}>
-            <p className={style.name}>{name}</p>
-            <p className={style.number}>{new Intl.NumberFormat('en').format(active)}</p>
-          </span>
-          <img className={style.arrow} src={arrow} alt="Arrow" />
-        </div>
-      );
-    case 'Europe':
-      return (
-        <div className={style.Europe}>
-          <img className={style.MapImg} src={europeIMG} alt="Europe" />
-          <span className={style.info}>
-            <p className={style.name}>{name}</p>
-            <p className={style.number}>{new Intl.NumberFormat('en').format(active)}</p>
-          </span>
-          <img className={style.arrow} src={arrow} alt="Arrow" />
-        </div>
-      );
-    case 'Australia-Oceania':
-      return (
-        <div className={style.Australia}>
-          <img className={style.MapImg} src={oceaniaIMG} alt="Oceania" />
-          <span className={style.info}>
-            <p className={style.name}>{name}</p>
-            <p className={style.number}>{new Intl.NumberFormat('en').format(active)}</p>
-          </span>
-          <img className={style.arrow} src={arrow} alt="Arrow" />
-        </div>
-      );
-    case 'Africa':
-      return (
-        <div className={style.Africa}>
-          <img className={style.MapImg} src={africaIMG} alt="Africa" />
-          <span className={style.info}>
-            <p className={style.name}>{name}</p>
-            <p className={style.number}>{new Intl.NumberFormat('en').format(active)}</p>
-          </span>
-          <img className={style.arrow} src={arrow} alt="Arrow" />
-        </div>
-      );
-    default:
-      return null;
+  function mapImg() {
+    switch (name) {
+      case 'Asia':
+        return <img className={style.mapImg} src={asiaIMG} alt="Continent Map" />;
+      case 'North America':
+        return <img className={style.mapImg} src={northAmericaIMG} alt="Continent Map" />;
+
+      case 'South America':
+        return <img className={style.mapImg} src={southAmericaIMG} alt="Continent Map" />;
+
+      case 'Europe':
+        return <img className={style.mapImg} src={europeIMG} alt="Continent Map" />;
+
+      case 'Australia-Oceania':
+        return <img className={style.mapImg} src={oceaniaIMG} alt="Continent Map" />;
+
+      case 'Africa':
+        return <img className={style.mapImg} src={africaIMG} alt="Continent Map" />;
+
+      default:
+        return null;
+    }
   }
+
+  return (
+    <div>
+      {mapImg()}
+      <span className={style.info}>
+        <p className={style.name}>{name}</p>
+        <p className={style.number}>{new Intl.NumberFormat('en').format(active)}</p>
+        <Link to={`/${name}`}><img className={style.arrow} src={arrow} alt="Arrow" /></Link>
+      </span>
+    </div>
+  );
 }
 
 ContinentsDisplay.defaultProps = {
