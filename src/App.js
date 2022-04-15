@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import NotMatch from './Pages/NotMatch/NotMatch';
+import Spinner from './components/Spinner/Spinner';
+
+const HomePage = React.lazy(() => import('./Pages/HomePage/HomePage'));
+const ContinentPage = React.lazy(() => import('./Pages/ContinentPage/ContinentPage'));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Suspense fallback={<Spinner />}>
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/:continentName" element={<ContinentPage />} />
+          <Route path="*" element={<NotMatch />} />
+        </Routes>
+      </Router>
+    </React.Suspense>
   );
 }
 
