@@ -96,9 +96,9 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
+- Data provided by [NovelCOVID API](https://documenter.getpostman.com/view/11144369/Szf6Z9B3?version=latest#84689601-77bd-4992-a8a7-0db57be29402).
+- Original design by [Nelson Sakwa](https://www.behance.net/sakwadesignstudio).
+- 
 
 ## 📝 License
 
