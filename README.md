@@ -5,10 +5,6 @@
 
 > A web application in which you can see de active cases in continents and the countries live view.
 
-## Project's feature video
-
-[Video Link](https://www.loom.com/share/f370974053dc457893cf485422f93bd9)
-
 ## Technologies used
 
 - React
